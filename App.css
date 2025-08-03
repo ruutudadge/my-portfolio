@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dark {
+  background: #121212;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #222;
+  color: #fff;
+}
+
+.theme-toggle {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero, .about, .projects, .skills, .contact {
+  padding: 2rem;
+  text-align: center;
+}
+
+.project-card {
+  margin: 1rem auto;
+  padding: 1rem;
+  max-width: 400px;
+  background: #333;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.badges img {
+  margin: 0.5rem;
+}
