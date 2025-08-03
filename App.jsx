@@ -1,104 +1,98 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import "./App.css";
 
-export default function App() {
-  const [dark, setDark] = useState(true);
+function App() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   return (
-    <div className={dark ? "dark" : ""}>
-      <header className="header">
+    <div className="App">
+      {/* Navbar */}
+      <nav className="navbar">
         <h1>Rutuja Dadge</h1>
-        <button className="theme-toggle" onClick={() => setDark(!dark)}>
-          {dark ? "Light Mode" : "Dark Mode"}
-        </button>
-      </header>
+        <div className="links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
 
       {/* Hero Section */}
-      <section data-aos="fade-up" className="hero">
-        <h2>AI & Data Science Enthusiast</h2>
-        <p>Passionate about Python, APIs, and Automation</p>
-      </section>
+      <motion.section
+        className="hero"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h2>Hello, I'm Rutuja 👋</h2>
+        <p>Aspiring AI & Data Science Developer | Enthusiastic Learner</p>
+      </motion.section>
 
       {/* About Section */}
-      <motion.section
-        className="about"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <section id="about" data-aos="fade-up">
         <h2>About Me</h2>
         <p>
-          I’m pursuing a B.E. in AI & Data Science at SRTTC-FOE (SPPU). 
-          Experienced in building automation tools and API-driven workflows.
+          I am an undergraduate AI & Data Science student passionate about
+          building intelligent applications and automation workflows. My goal is
+          to solve real-world problems using modern technologies.
         </p>
-      </motion.section>
+      </section>
 
       {/* Projects Section */}
-      <motion.section
-        className="projects"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <section id="projects" data-aos="fade-up">
         <h2>Projects</h2>
-        <div className="project-card" data-aos="zoom-in">
-          <h3>Court Data Fetcher</h3>
-          <p>Automates fetching and parsing of court case data using Selenium.</p>
-          <a href="https://court-data-fetcher-1.onrender.com/" target="_blank">
-            Live Demo
-          </a>
-        </div>
+        <div className="projects-grid">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="project-card"
+          >
+            <h3>Court Data Fetcher</h3>
+            <p>Automates court case data extraction and analysis.</p>
+            <a href="https://github.com/ruutudadge/court-data-fetcher" target="_blank">View on GitHub</a>
+          </motion.div>
 
-        <div className="project-card" data-aos="zoom-in" data-aos-delay="200">
-          <h3>WhatsApp-Driven Google Drive Assistant</h3>
-          <p>
-            Uses n8n workflows + WhatsApp API to manage Google Drive files
-            (list, delete, move, summarize).
-          </p>
-        </div>
-      </motion.section>
-
-      {/* Skills Section */}
-      <motion.section
-        className="skills"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h2>Skills</h2>
-        <ul>
-          <li>Python, Flask, APIs</li>
-          <li>Google Cloud, n8n Automation</li>
-          <li>React, JavaScript</li>
-          <li>Git, GitHub, Render Deployment</li>
-        </ul>
-      </motion.section>
-
-      {/* Contact + Badges */}
-      <section className="contact" data-aos="fade-up">
-        <h2>Contact</h2>
-        <div className="badges">
-          <a href="https://github.com/ruutudadge" target="_blank">
-            <img
-              src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"
-              alt="GitHub"
-            />
-          </a>
-          <a href="https://linkedin.com/in/ruutudadge" target="_blank">
-            <img
-              src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"
-              alt="LinkedIn"
-            />
-          </a>
-          <a href="mailto:dadgeruutu@gmail.com">
-            <img
-              src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"
-              alt="Email"
-            />
-          </a>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="project-card"
+          >
+            <h3>WhatsApp-Driven Google Drive Assistant</h3>
+            <p>Control Google Drive via WhatsApp using n8n + Flask.</p>
+            <a href="https://github.com/ruutudadge/whatsapp-driven-google-assistant" target="_blank">View on GitHub</a>
+          </motion.div>
         </div>
       </section>
+
+      {/* Skills Section */}
+      <section id="skills" data-aos="fade-up">
+        <h2>Skills</h2>
+        <ul>
+          <li>Python, Flask</li>
+          <li>React, Vite, JavaScript</li>
+          <li>n8n Workflows, API Integration</li>
+          <li>Google Cloud, OAuth, Webhooks</li>
+        </ul>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:dadgeruutu@gmail.com">dadgeruutu@gmail.com</a></p>
+        <p>
+          <a href="https://www.linkedin.com/in/ruutudadge" target="_blank">LinkedIn</a> | 
+          <a href="https://github.com/ruutudadge" target="_blank"> GitHub</a>
+        </p>
+      </section>
+
+      <footer>
+        <p>© 2025 Rutuja Dadge | Built with React + Vite</p>
+      </footer>
     </div>
   );
 }
+
+export default App;
